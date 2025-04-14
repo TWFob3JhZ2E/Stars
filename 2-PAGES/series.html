@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Séries - StarMovies</title>
+  <link rel="stylesheet" href="../4-GERAL/style.css">
+  <link rel="icon" href="../6-IMG/Logo1.png" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>StarMovies</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../1-HOMEPAGE/index.html">Início</a></li>
+        <li><a href="../2-PAGES/filmes.html">Filmes</a></li>
+        <li><a href="../2-PAGES/series.html">Séries</a></li>
+        <li class="search">
+          <form onsubmit="return false;" style="position: relative;">
+            <input type="text" placeholder="Buscar..." id="search" autocomplete="off" oninput="buscarSugestoes(this.value)">
+            <div id="sugestoes"></div>
+          </form>   
+        </li>
+      </ul>
+    </nav>    
+  </header>
+
+  <div class="orange-bar"></div>
+
+  <h2>Séries Populares</h2>
+  <main>
+    <div id="series-container" class="series-grid"></div>
+    <div id="pagination">
+      <div class="buttons-container">
+        <button id="prev-btn">Voltar</button>
+        <button id="next-btn">Próximo</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 StarMovies. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="../1-HOMEPAGE/pesqui.js"></script>
+
+  <script>
+    let paginaAtual = 1;
+
+    // Carregar séries da nova rota paginada
+    function carregarSeries() {
+      fetch(`http://127.0.0.1:5001/series/pagina?pagina=${paginaAtual}`)
+        .then(response => response.json())
+        .then(series => {
+          const seriesContainer = document.getElementById('series-container');
+          seriesContainer.innerHTML = '';
+
+          series.forEach(serie => {
+            const serieElement = document.createElement('div');
+            serieElement.classList.add('serie-item');
+            serieElement.innerHTML = `
+              <img src="${serie.capa}" alt="${serie.titulo}">
+              <h3>${serie.titulo}</h3>
+              <p>${serie.qualidade}</p>
+              <a href="player.html?id=${serie.id}">Assistir</a>
+            `;
+            seriesContainer.appendChild(serieElement);
+          });
+
+          // Atualizar estado dos botões
+          document.getElementById('prev-btn').disabled = paginaAtual === 1;
+          document.getElementById('next-btn').disabled = series.length < 50;
+        })
+        .catch(error => console.error('Erro ao carregar séries:', error));
+    }
+
+    // Navegação
+    document.getElementById('prev-btn').addEventListener('click', () => {
+      if (paginaAtual > 1) {
+        paginaAtual--;
+        carregarSeries();
+        scrollToTop();
+      }
+    });
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+      paginaAtual++;
+      carregarSeries();
+      scrollToTop();
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Carregar a primeira página
+    carregarSeries();
+  </script>
+</body>
+</html>

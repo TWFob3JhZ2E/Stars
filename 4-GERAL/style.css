@@ -1,0 +1,308 @@
+/* --------------------------- Reset básico --------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --------------------------- Estilos gerais --------------------------- */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212; /* Fundo mais escuro */
+  color: #fff;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* --------------------------- Contêiner dos Botões --------------------------- */
+.buttons-container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 20px; /* Espaçamento entre os botões */
+  padding: 20px;
+}
+
+/* --------------------------- Estilo dos Botões de Navegação --------------------------- */
+button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #f4a300; /* Cor de fundo em amarelo */
+  border: 2px solid #f4a300; /* Borda com a mesma cor */
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+button:hover {
+  background-color: #cc5200; /* Cor de fundo ao passar o mouse */
+  border-color: #cc5200; /* Cor da borda ao passar o mouse */
+  transform: translateY(-3px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+
+button:active {
+  transform: translateY(0); /* Efeito de clique */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra reduzida ao clicar */
+}
+
+/* Estilos específicos para os botões de Voltar e Próximo */
+#prev-btn {
+  background-color: #f4a300;
+  border-color: #f4a300;
+}
+
+#next-btn {
+  background-color: #f4a300;
+  border-color: #f4a300;
+}
+
+#prev-btn:hover, #next-btn:hover {
+  background-color: #cc5200; /* Cor de fundo ao passar o mouse */
+  border-color: #cc5200;
+}
+
+
+/* --------------------------- HEADER --------------------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  background-color: #181818; /* Fundo mais escuro para o header */
+  position: relative;
+}
+
+header .logo h1 {
+  font-size: 2.5rem;
+  color: #f4a300;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  color: #fff;
+  background-color: #f4a300;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+nav ul li a:focus {
+  background-color: #f4a300;
+  border: 2px solid #fff;
+}
+
+.orange-bar {
+  width: 100%;
+  height: 0.3rem;
+  background-color: #f4a300;
+}
+
+nav ul li.search form {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li.search input[type="text"] {
+  padding: 0.5rem 1rem;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+  margin-right: 10px;
+}
+
+nav ul li.search input[type="text"]:focus {
+  border-color: #f4a300;
+  outline: none;
+}
+
+nav ul li.search button {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 2px solid #f4a300;
+  border-radius: 50%;
+  color: #f4a300;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+nav ul li.search button:hover {
+  background-color: #f4a300;
+  color: #222;
+}
+
+/* --------------------------- Grid de Filmes --------------------------- */
+.filmes-grid,
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Aumentei o tamanho dos cards */
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.filme-item,
+.serie-item {
+  background-color: #1f1f1f; /* Fundo mais escuro para os cards */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.filme-item:hover,
+.serie-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.filme-item img,
+.serie-item img {
+  width: 100%;
+  height: 300px; /* Aumentei a altura das imagens */
+  object-fit: cover;
+  border-bottom: 4px solid #f4a300;
+}
+
+.filme-item h3,
+.serie-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin: 10px;
+  text-align: center;
+}
+
+.filme-item p,
+.serie-item p {
+  color: #ccc;
+  font-size: 14px;
+  margin: 0 10px 10px 10px;
+  text-align: center;
+}
+
+.filme-item a,
+.serie-item a {
+  display: block;
+  text-align: center;
+  background-color: #f4a300;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: auto;
+}
+
+.filme-item a:hover,
+.serie-item a:hover {
+  background-color: #cc5200;
+  transform: scale(1.05);
+}
+
+/* --------------------------- Footer --------------------------- */
+footer {
+  background-color: #181818; /* Fundo mais escuro para o footer */
+  color: #fff;
+  text-align: center;
+  padding: 1.25rem 0;
+  font-size: 1rem;
+  border-top: 0.3rem solid #f4a300;
+}
+
+/* --------------------------- Responsividade --------------------------- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+  }
+
+  .filmes-grid,
+  .series-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajuste para telas menores */
+  }
+
+  .filme-item,
+  .serie-item {
+    max-width: 100%;
+  }
+}
+
+/* --------------------------- Pesquisar --------------------------- */
+
+#sugestoes {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-top: none;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.sugestao-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sugestao-item:hover {
+  background-color: #333;
+}
+
+.sugestao-item img {
+  width: 90px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.sugestao-item span {
+  color: #fff;
+  font-size: 14px;
+}
+
+

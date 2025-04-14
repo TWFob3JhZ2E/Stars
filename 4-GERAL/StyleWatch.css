@@ -1,0 +1,152 @@
+/* --------------------------- Reset básico --------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --------------------------- Estilos gerais --------------------------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1c1c1c;
+  color: #fff;
+  line-height: 1.5;
+}
+
+/* --------------------------- HEADER --------------------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  background-color: #222;
+  position: relative;
+}
+
+/* Logo */
+header .logo h1 {
+  font-size: 2.5rem;
+  color: #f4a300;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Navegação */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Efeito ao passar o mouse nos links */
+nav ul li a:hover,
+nav ul li a:focus {
+  color: #fff;
+  background-color: #f4a300;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+nav ul li a:focus {
+  background-color: #f4a300;
+  border: 2px solid #fff;
+}
+
+/* Faixa abaixo do Header */
+.orange-bar {
+  width: 100%;
+  height: 0.3rem;
+  background-color: #f4a300;
+}
+
+/* --------------------------- Player de Vídeo --------------------------- */
+#player-container {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  background-color: #333;
+  border-radius: 8px;
+}
+
+#player {
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+#titulo-serie {
+  font-size: 2rem;
+  color: #f4a300;
+  margin-bottom: 1.5rem;
+}
+
+#movie-name {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+/* --------------------------- Propagandas --------------------------- */
+#ads-container {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #444;
+  border-radius: 8px;
+  text-align: center;
+}
+
+#ads-container h3 {
+  font-size: 1.5rem;
+  color: #f4a300;
+  margin-bottom: 1rem;
+}
+
+.ad {
+  background-color: #555;
+  color: #fff;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.ad:hover {
+  background-color: #f4a300;
+  cursor: pointer;
+}
+
+/* --------------------------- FOOTER --------------------------- */
+footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1.25rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
+}

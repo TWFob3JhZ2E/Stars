@@ -1,0 +1,211 @@
+/* --------------------------- Reset básico --------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* --------------------------- Estilos gerais --------------------------- */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: #fff;
+  }
+  
+  /* --------------------------- HEADER --------------------------*/
+  /* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  background-color: #222;
+  position: relative;
+}
+
+/* Logo */
+header .logo h1 {
+  font-size: 2.5rem;
+  color: #f4a300;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Navegação */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Efeito ao passar o mouse nos links */
+nav ul li a:hover,
+nav ul li a:focus {
+  color: #fff;
+  background-color: #f4a300;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none; /* Remove o contorno padrão do foco */
+}
+
+/* Foco acessível - melhora a visibilidade do link ao ser selecionado pelo teclado */
+nav ul li a:focus {
+  background-color: #f4a300;
+  border: 2px solid #fff;
+}
+
+/* Faixa abaixo do Header */
+.orange-bar {
+  width: 100%;
+  height: 0.3rem;
+  background-color: #f4a300;
+}
+
+/* Campo de pesquisa */
+nav ul li.search form {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li.search input[type="text"] {
+  padding: 0.5rem 1rem;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+  margin-right: 10px;
+}
+
+nav ul li.search input[type="text"]:focus {
+  border-color: #f4a300;
+  outline: none;
+}
+
+nav ul li.search button {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 2px solid #f4a300;
+  border-radius: 50%;
+  color: #f4a300;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+nav ul li.search button:hover {
+  background-color: #f4a300;
+  color: #222;
+}
+  
+  /* --------------------------- Contato --------------------------- */
+  .contato {
+    margin: 40px 20px;
+    text-align: center;
+  }
+  
+  .contato h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .contato p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    font-size: 1.1em;
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 5px;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+  }
+  
+  button {
+    padding: 15px 30px;
+    background-color: #f4a300;
+    border: none;
+    font-size: 1.2em;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e78a00;
+  }
+  
+  /* --------------------------- Footer --------------------------- */
+  footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1em;
+    border-top: 5px solid #f4a300;
+  }
+  
+  /* --------------------------- Responsividade --------------------------- */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    form {
+      padding: 20px;
+    }
+  
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+    }
+  }
+  

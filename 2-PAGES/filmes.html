@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Filmes - StarMovies</title>
+  <link rel="stylesheet" href="../4-GERAL/style.css">
+  <link rel="icon" href="../6-IMG/Logo1.png" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>StarMovies</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../1-HOMEPAGE/index.html">Início</a></li>
+        <li><a href="../2-PAGES/filmes.html">Filmes</a></li>
+        <li><a href="../2-PAGES/series.html">Séries</a></li>
+        <li class="search">
+          <form onsubmit="return false;" style="position: relative;">
+            <input type="text" placeholder="Buscar..." id="search" autocomplete="off" oninput="buscarSugestoes(this.value)">
+            <div id="sugestoes"></div>
+          </form>   
+        </li>
+      </ul>
+    </nav>    
+  </header>
+
+  <div class="orange-bar"></div>
+
+  <h2>Filmes Populares</h2>
+  <main>
+    <div id="filmes-container" class="filmes-grid"></div>  <!-- Usando a classe 'filmes-grid' -->
+    <div id="pagination">
+      <div class="buttons-container">
+        <button id="prev-btn">Voltar</button>
+        <button id="next-btn">Próximo</button>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 StarMovies. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="../1-HOMEPAGE/pesqui.js"></script>
+
+  <script>
+    let paginaAtual = 1; // Página inicial
+
+    // Função para carregar filmes da API Flask
+    function carregarFilmes() {
+      fetch(`http://127.0.0.1:5001/filmes/pagina?pagina=${paginaAtual}`)  // URL com o parâmetro da página
+        .then(response => response.json())
+        .then(filmes => {
+          const filmesContainer = document.getElementById('filmes-container');
+          filmesContainer.innerHTML = '';  // Limpar filmes anteriores
+
+          filmes.forEach(filme => {
+            const filmeElement = document.createElement('div');
+            filmeElement.classList.add('filme-item');
+            filmeElement.innerHTML = `
+              <img src="${filme.capa}" alt="${filme.titulo}">
+              <h3>${filme.titulo}</h3>
+              <p>${filme.qualidade}</p>
+              <a href="player.html?id=${filme.id}">Assistir</a>
+            `;
+            filmesContainer.appendChild(filmeElement);
+          });
+
+          // Habilitar ou desabilitar os botões de navegação
+          document.getElementById('prev-btn').disabled = paginaAtual === 1;
+          document.getElementById('next-btn').disabled = filmes.length < 50;  // Se menos de 50 filmes, não tem "próximo"
+        })
+        .catch(error => console.error('Erro ao carregar filmes:', error));
+    }
+
+    // Função para carregar a página anterior
+    document.getElementById('prev-btn').addEventListener('click', () => {
+      if (paginaAtual > 1) {
+        paginaAtual--;
+        carregarFilmes();
+      }
+    });
+
+    // Função para carregar a próxima página
+    document.getElementById('next-btn').addEventListener('click', () => {
+      paginaAtual++;
+      carregarFilmes();
+    });
+
+    // Carregar filmes na página inicial
+    carregarFilmes();
+
+
+     // Adicionar o evento de clique ao botão "Próximo"
+  document.getElementById('next-btn').addEventListener('click', function() {
+    // Rolar a página para o topo
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Isto faz a rolagem ser suave
+    });
+  });
+
+  </script>
+</body>
+</html>
